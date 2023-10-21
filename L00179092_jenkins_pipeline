@@ -12,7 +12,7 @@ pipeline {
    
 stage('Build and Test') {
       steps {
-        bat 'dir -ltr'
+        
         // build the project and create a JAR file
         bat 'mvn clean package'
       }
