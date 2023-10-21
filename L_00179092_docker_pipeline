@@ -1,4 +1,5 @@
-FROM openjdk:21
-EXPOSE 8080
-ADD target/ShreyaRaghuvanshiJAR.jar ShreyaRaghuvanshiJAR.jar
-ENTRYPOINT ["java","-jar","/ShreyaRaghuvanshiJAR.jar"]
+FROM openjdk
+WORKDIR /ShreyaRaghuvanshi
+COPY . /ShreyaRaghuvanshi
+RUN javac L00179092.java
+CMD [ "java","L00179092" ]
