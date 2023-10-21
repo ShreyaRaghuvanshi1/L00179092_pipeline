@@ -5,7 +5,7 @@ pipeline {
     stage('Checkout') {
       steps {
         //bat 'echo passed'
-        git branch: 'main', url: 'https://github.com/ShreyaRaghuvanshi1/L00179092_pipeline.git'
+        git branch: 'main', url: 'git@github.com:ShreyaRaghuvanshi1/L00179092_pipeline.git'
       }
     }
     
