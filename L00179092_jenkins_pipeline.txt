@@ -10,6 +10,13 @@ pipeline {
     
     
   }  
+stage('Build and Test') {
+      steps {
+        sh 'ls -ltr'
+        // build the project and create a JAR file
+        sh 'cd L00179092_jenkins_pipeline && mvn clean package'
+      }
+    }
   stage('Static Code Analysis') {
       environment {
         SONAR_URL = "http://localhost:9000"
