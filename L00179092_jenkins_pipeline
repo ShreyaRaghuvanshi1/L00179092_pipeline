@@ -4,8 +4,8 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        bat 'echo passed'
-        //git branch: 'main', url: 'https://github.com/ShreyaRaghuvanshi1/L00179092_pipeline.git'
+        //bat 'echo passed'
+        git branch: 'main', url: 'https://github.com/ShreyaRaghuvanshi1/L00179092_pipeline.git'
       }
     }
     
