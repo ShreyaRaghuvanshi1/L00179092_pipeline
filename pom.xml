@@ -19,20 +19,22 @@
 <maven.compiler.release>21</maven.compiler.release> 
 
   </properties>
+<dependencyManagement>
+  
 
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>21</version>
       <scope>test</scope>
     </dependency>
 
 
-        <dependency>
+    <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+    </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -52,6 +54,9 @@
 
     
   </dependencies>
+  </dependencyManagement>
+    
+  
 
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
@@ -110,6 +115,6 @@
             </plugin>
       </plugins>
     </pluginManagement>
-    <finalName>ShreyaRaghuvanshiJAR</finalName>
+    <finalName>ShreyaRaghuvanshi</finalName>
   </build>
 </project>
