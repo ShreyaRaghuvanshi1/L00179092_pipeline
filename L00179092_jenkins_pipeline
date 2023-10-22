@@ -19,7 +19,7 @@ stage('Build and Test') {
     }
   stage('Static Code Analysis') {
       environment {
-        SONAR_URL = "http://localhost:9000"
+        SONAR_URL = "localhost:9000"
       }
       steps {
         withCredentials([string(credentialsId: 'sonarqube_L00179092', variable: 'SONAR_AUTH_TOKEN')]) {
