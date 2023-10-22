@@ -2,7 +2,7 @@ pipeline {
   agent any
    
   stages {
-    stage('Checkout') {
+    stage('Checkout') { 
       steps {
         //bat 'echo passed'
         git branch: 'main', credentialsId:'d595fcb3-2cc0-444a-89ee-5f63ab583082', url: 'git@github.com:ShreyaRaghuvanshi1/L00179092_pipeline.git'
