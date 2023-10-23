@@ -44,6 +44,12 @@ stage('Build and Test') {
       }
     }
 stage('Push Docker Image'){
+ environment {
+        //DOCKER_IMAGE = "ShreyaRaghuvanshi ."
+        // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
+        REGISTRY_CREDENTIALS = credentials('docker-cred')
+      }
+
   steps{
     script {
      withCredentials([usernamePassword(credentialsId: 'docker-cred', variable:'var', passwordVariable: 'password', usernameVariable: 'username')]){
