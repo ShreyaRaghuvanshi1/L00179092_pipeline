@@ -23,7 +23,7 @@ stage('Build and Test') {
       }
        steps {
         withCredentials([string(credentialsId: 'sonarqube_L00179092', variable: 'SONAR_AUTH_TOKEN')]) {
-          bat 'mvn sonar:sonar \
+          bat 'cd Mvn_L00179092 && mvn sonar:sonar \
   -Dsonar.projectKey=WebApp_L00179092 \
   -Dsonar.host.url=http://localhost:9000 \
   -Dsonar.login=838a116cf359d3ec525b15388ea72fd7b3897a0a'
