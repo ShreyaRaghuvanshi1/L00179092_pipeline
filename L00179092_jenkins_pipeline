@@ -52,7 +52,7 @@ stage('Push Docker Image'){
 
   steps{
     script {
-     withCredentials([usernamePassword(credentialsId: 'docker-cred', passwordVariable: 'password', usernameVariable: 'username')]){
+     withCredentials([string(credentialsId: 'docker-cred', passwordVariable: 'password', usernameVariable: 'username')]){
         bat 'docker login -u shreyaraghuvanshi1 -p ${docker-cred}'
 }
         bat 'docker push docker/shreya-raghuvanshi'
