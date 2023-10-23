@@ -58,6 +58,7 @@ stage('Push Docker Image'){
             }
         }
       }
+}
 
 stage('Update Deployment File') {
         environment {
