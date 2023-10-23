@@ -46,8 +46,8 @@ stage('Build and Test') {
 stage('Push Docker Image'){
   steps{
     script {
-     withCredentials([usernamePassword(credentialsId: 'docker-cred', passwordVariable: 'password', usernameVariable: 'username')]){
-        bat 'docker login -u shreyaraghuvanshi1 -p ${docker-cred}'
+     withCredentials([usernamePassword(credentialsId: 'docker-cred', variable:'var', passwordVariable: 'password', usernameVariable: 'username')]){
+        bat 'docker login -u shreyaraghuvanshi1 -p ${var}'
 }
         bat 'docker push docker/shreya-raghuvanshi'
 }
