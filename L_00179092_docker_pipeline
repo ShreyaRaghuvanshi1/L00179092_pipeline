@@ -1,0 +1,5 @@
+FROM openjdk
+WORKDIR /ShreyaRaghuvanshi
+COPY . /ShreyaRaghuvanshi
+RUN javac L00179092.java
+CMD [ "java","L00179092" ]

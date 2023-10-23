@@ -1,0 +1,69 @@
+pipeline {
+  agent any
+  
+  stages {
+    stage('Checkout') { 
+      steps {
+        //bat 'echo passed'
+        git branch: 'main', credentialsId:'d595fcb3-2cc0-444a-89ee-5f63ab583082', url: 'git@github.com:ShreyaRaghuvanshi1/L00179092_pipeline.git'
+      }
+    }
+    
+   
+stage('Build and Test') {
+      steps {
+        
+        // build the project and create a JAR file
+        bat 'mvn clean package'
+      }
+    }
+  stage('Static Code Analysis') {
+      environment {
+        SONAR_URL = "http://localhost:9000" 
+      }
+       steps {
+        withCredentials([string(credentialsId: 'sonarqube_L00179092', variable: 'SONAR_AUTH_TOKEN')]) {
+          bat 'mvn sonar:sonar \
+  -Dsonar.projectKey=WebApp_L00179092 \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.login=838a116cf359d3ec525b15388ea72fd7b3897a0a'
+        }
+      }
+    }
+ stage('Build and Push Docker Image') {
+      environment {
+        DOCKER_IMAGE = "javaapp:${BUILD_NUMBER}"
+        // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
+        REGISTRY_CREDENTIALS = credentials('docker-cred')
+      }
+      steps {
+        script {
+            bat 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && docker build -t ${DOCKER_IMAGE} .'
+            def dockerImage = docker.image("${DOCKER_IMAGE}")
+            docker.withRegistry('https://index.docker.io/v1/', "docker-cred") {
+                dockerImage.push()
+            }
+        }
+      }
+    }
+stage('Update Deployment File') {
+        environment {
+            GIT_REPO_NAME = "L00179092_pipeline"
+            GIT_USER_NAME = "ShreyaRaghuvanshi1"
+        }
+        steps {
+            withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
+                bat '''
+                    git config user.email "L00179092@atu.ie"
+                    git config user.name "ShreyaRaghuvanshi1"
+                    BUILD_NUMBER=${BUILD_NUMBER}
+                    sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" WebApp.java
+                    git add WebApp.java
+                    git commit -m "Update deployment image to version ${BUILD_NUMBER}"
+                    git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+                '''
+            }
+        }
+    }
+  }
+}
