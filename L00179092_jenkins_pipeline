@@ -52,13 +52,12 @@ stage('Push Docker Image'){
 
   steps{
     script {
-     withCredentials([usernamePassword(credentialsId: 'docker-cred', passwordVariable: 'password', usernameVariable: 'username')]){
-        bat 'docker login -u shreyaraghuvanshi1 -p ${docker-cred}'
-}
-        bat 'docker push docker/shreya-raghuvanshi'
-}
-}
-}
+            
+            docker.withRegistry('https://registry-1.docker.io/v2/', "docker-cred") {
+                dockerImage.push()
+            }
+        }
+      }
 
 stage('Update Deployment File') {
         environment {
