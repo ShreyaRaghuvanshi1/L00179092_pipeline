@@ -38,8 +38,8 @@ stage('Build and Test') {
       }
       steps {
         script {
-            bat 'cd Mvn_L00179092 && docker build -t docker/shreyaraghuvanshi .'
-            def dockerImage = docker.image("shreyaraghuvanshi .")
+            bat 'cd Mvn_L00179092 && docker build -t docker/file-shreyaraghuvanshi .'
+            def dockerImage = docker.image("docker/file-shreyaraghuvanshi .")
             docker.withRegistry('https://index.docker.io/v1/', "docker-cred") {
                 dockerImage.push()
             }
