@@ -1,4 +1,4 @@
 FROM openjdk:21
 EXPOSE 8080
-ADD target/ShreyaRaghuvanshi.jar ShreyaRaghuvanshi.jar
-ENTRYPOINT [ "java","-jar","/ShreyaRaghuvanshi.jar" ]
+ADD target/shreya-raghuvanshi.jar shreya-raghuvanshi.jar
+ENTRYPOINT [ "java","-jar","/shreya-raghuvanshi.jar" ]
