@@ -52,7 +52,7 @@ stage('Push Docker Image'){
 
   steps{
     script {
-            
+            def dockerImage = docker.image('docker/shreya-raghuvanshi')
             docker.withRegistry('https://registry-1.docker.io/v2/', "docker-cred") {
                 dockerImage.push()
             }
