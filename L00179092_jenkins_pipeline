@@ -14,7 +14,7 @@ stage('Build and Test') {
       steps {
         
         // build the project and create a JAR file
-        bat 'mvn clean package'
+        bat 'cd Mvn_L00179092 && mvn clean package'
       }
     }
   stage('Static Code Analysis') {
