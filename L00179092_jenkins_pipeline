@@ -30,7 +30,7 @@ stage('Build and Test') {
         }
       }
     }
- stage('Build and Push Docker Image') {
+ stage('Build Docker Image') {
       environment {
         //DOCKER_IMAGE = "ShreyaRaghuvanshi ."
         // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
@@ -39,13 +39,21 @@ stage('Build and Test') {
       steps {
         script {
             bat 'cd Mvn_L00179092 && docker build -t docker/shreya-raghuvanshi .'
-           //def dockerImage = docker.image('docker/shreya-raghuvanshi .')
-            docker.withRegistry('https://index.docker.io/v1/', "docker-cred") {
-                dockerImage.push()
-            }
+           
         }
       }
     }
+stage('Push Docker Image'){
+  steps{
+    script {
+      withCredentials([String(credentialsId:'docker-cred', variable: 'dockercred')]){
+        bat 'docker login -u ShreyaRaghuvanshi1 -p ${dockercred}'
+}
+        bat 'docker push docker/shreya-raghuvanshi'
+}
+}
+}
+
 stage('Update Deployment File') {
         environment {
             GIT_REPO_NAME = "L00179092_pipeline"
