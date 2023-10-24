@@ -72,7 +72,6 @@ bat "docker push shreyaraghuvanshi1/docker_repo:latest"
 }
     }
 }
-
-
+}
 
 
