@@ -58,7 +58,8 @@ withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable
            // def registry_url = "registry.hub.docker.com/"
         def dockerImage = docker.image('docker/shreya-raghuvanshi')
             bat 'docker login -u $USER -p $PASSWORD --password-stdin'
-            //docker.withRegistry('http://registry.hub.docker.com/', "docker-cred") {
+            //docker.withRegistry('http://registry.hub.docker.com/', "docker-cred") 
+{
                 bat 'docker push shreyaraghuvanshi1/docker/shreya-raghuvanshi:latest'
             }
         }
@@ -86,5 +87,5 @@ stage('Update Deployment File') {
         }
     }
   }
-}
+
 }
