@@ -51,7 +51,9 @@ stage('login')
         REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
 steps{
+script{
 bat 'echo $REGISTRY_CREDENTIALS_PSW | docker login -u $REGISTRY_CREDENTIALS_USR --password-stdin'
+}
 }
 }
 
