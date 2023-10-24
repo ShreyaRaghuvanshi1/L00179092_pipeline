@@ -59,7 +59,7 @@ stage('Push Docker Image'){
       //  def dockerImage = docker.image('docker/shreya-raghuvanshi')
           //  bat 'docker login -u $USER -p $PASSWORD --password-stdin'
             //docker.withRegistry('http://registry.hub.docker.com/', "docker-cred") 
-                bat 'docker tag docker_repo:latest'
+                bat 'docker tag docker_repo:latest docker_repo:new'
                 bat 'docker push shreyaraghuvanshi1/docker/shreya-raghuvanshi:latest'
             
         }
