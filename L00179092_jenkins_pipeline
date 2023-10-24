@@ -69,7 +69,7 @@ stage('Push Docker Image'){
             
         }
 }
-    }
+    
 
 
 stage('Update Deployment File') {
@@ -94,3 +94,4 @@ stage('Update Deployment File') {
   }
 
 }
+
