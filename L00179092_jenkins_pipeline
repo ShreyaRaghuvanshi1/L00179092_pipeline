@@ -52,8 +52,12 @@ stage('Push Docker Image'){
 
   steps{
     script {
-            def dockerImage = docker.image('docker/shreya-raghuvanshi')
-            docker.withRegistry('https://registry-1.docker.io/v2/', "docker-cred") {
+withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable:'USER', passwordVariable: 'PASSWORD')]}
+{
+            def registry_url = "registry.hub.docker.com/"
+        def dockerImage = docker.image('docker/shreya-raghuvanshi')
+            bat "docker login -u $USER -p $PASSWORD ${registry_url}"
+            docker.withRegistry('http://${registry_url}', "docker-cred") {
                 dockerImage.push()
             }
         }
