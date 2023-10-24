@@ -54,7 +54,7 @@ stage('Push Docker Image'){
       }
 
   steps{
-    scripts
+    script
            // def registry_url = "registry.hub.docker.com/"
       //  def dockerImage = docker.image('docker/shreya-raghuvanshi')
           //  bat 'docker login -u $USER -p $PASSWORD --password-stdin'
