@@ -48,7 +48,7 @@ stage('Push Docker Image'){
         DOCKER_IMAGE = "shreya-raghuvanshi ."
         // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
-     def registry_url = "registry.hub.docker.com/"
+     def registry_url = "shreyaraghuvanshi/docker/shreya-raghuvanshi"
       }
 
   steps{
