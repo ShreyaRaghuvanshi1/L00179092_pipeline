@@ -58,7 +58,7 @@ withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable
         def dockerImage = docker.image('docker/shreya-raghuvanshi')
             bat "docker login -u $USER -p $PASSWORD ${registry_url}"
             docker.withRegistry('http://${registry_url}', "docker-cred") {
-                bat "docker push username/foldername:latest"
+                bat "docker push shreyaraghuvanshi1/docker_repo:latest"
             }
         }
       }
