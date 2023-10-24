@@ -30,7 +30,7 @@ stage('Build and Test') {
         }
       }
     }
- stage('Build and Push Docker Image') {
+stage('Build Docker Image') {
       environment {
         //DOCKER_IMAGE = "ShreyaRaghuvanshi ."
         // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
@@ -38,32 +38,40 @@ stage('Build and Test') {
       }
       steps {
         script {
-            bat 'cd Mvn_L00179092 && docker build -t docker/file-shreyaraghuvanshi .'
-            def dockerImage = docker.image("docker/file-shreyaraghuvanshi .")
-            docker.withRegistry('https://index.docker.io/v1/', "docker-cred") {
-                dockerImage.push()
-            }
+            bat 'cd Mvn_L00179092 && docker build -t docker/shreya-raghuvanshi .'
+           
         }
       }
     }
-stage('Update Deployment File') {
-        environment {
-            GIT_REPO_NAME = "L00179092_pipeline"
-            GIT_USER_NAME = "ShreyaRaghuvanshi1"
-        }
-        steps {
-            withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
-                bat '''
-                    git config user.email "L00179092@atu.ie"
-                    git config user.name "ShreyaRaghuvanshi1"
-                    BUILD_NUMBER=${BUILD_NUMBER}
-                    sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" WebApp.java
-                    git add WebApp.java
-                    git commit -m "Update deployment image to version ${BUILD_NUMBER}"
-                    git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
-                '''
-            }
-        }
-    }
-  }
+
+
+stage('Push Docker Image'){
+ environment {
+        //DOCKER_IMAGE = "shreya-raghuvanshi ."
+        // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
+        REGISTRY_CREDENTIALS = credentials('docker-cred')
+   //  def registry_url = "shreyaraghuvanshi1/docker/shreya-raghuvanshi"
+      }
+
+  steps{
+    script {
+           // def registry_url = "registry.hub.docker.com/"
+      //  def dockerImage = docker.image('docker/shreya-raghuvanshi')
+          
+            //docker.withRegistry('http://registry.hub.docker.com/', "docker-cred") 
+              //  bat 'docker tag docker/shreya-raghuvanshi:latest docker:new'
+               // bat 'docker push docker/shreya-raghuvanshi:latest'
+//withDockerRegistry([credentialsId: "docker-cred", url: "https://index.docker.io/v1"])
+
+ docker.withRegistry('https://index.docker.io/v1/', "docker-cred"){
+bat "docker tag docker/shreya-raghuvanshi:latest shreyaraghuvanshi1/docker_repo:latest"
+bat "docker push shreyaraghuvanshi1/docker_repo:latest"
 }
+            
+        }
+}
+    }
+}
+}
+
+
