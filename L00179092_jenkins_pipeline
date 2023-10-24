@@ -68,7 +68,7 @@ bat "docker push docker/shreya-raghuvanshi:latest" }
             
         }
 }
-    }
+    
 
 
 stage('Update Deployment File') {
