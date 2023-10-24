@@ -52,7 +52,7 @@ stage('Push Docker Image'){
 
   steps{
     script {
-withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable:'USER', passwordVariable: 'PASSWORD')]}
+withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable:'USER', passwordVariable: 'PASSWORD')])}
 {
             def registry_url = "registry.hub.docker.com/"
         def dockerImage = docker.image('docker/shreya-raghuvanshi')
