@@ -80,7 +80,7 @@ bat "docker push shreyaraghuvanshi1/docker_repo:latest"
 //kubernetesDeploy configs: '', kubeConfig: [path: 'C:\Users\DELL\.kube\config'], kubeconfigId: 'kubernetes_L00179092', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
                 kubernetesDeploy(
                                 credentialsType: 'KubeConfig',
-                                kubeConfig: [path: 'C:\Users\DELL\.kube\config'],
+                                kubeConfig: [path: 'C:/Users/DELL/.kube/config'],
                                 configs: 'Mvn_L00179092/deploymentservice.yaml', 
                                 dockerCredentials: [
                                       [credentialsId: 'docker-cred'],
