@@ -75,7 +75,8 @@ bat "docker push shreyaraghuvanshi1/docker_repo:latest"
       stage('Deploy to Kubernetes'){
         steps{
             script{
-kubernetesDeploy (configs: 'Mvn_L00179092/deploymentservice.yaml', kubeconfigId: 'kubernetes_L00179092')
+kubernetesDeploy (configs: 'Mvn_L00179092/deploymentservice.yaml', kubeconfigId: 'kubernetes_L00179092',
+dockerCredentials:[credentialsId: 'docker-cred'])
                 
 }
 }
