@@ -46,6 +46,7 @@ stage('Build and Test') {
         }
       }
     }
+}
 stage('Push Docker Image'){
  environment {
         DOCKER_IMAGE = "shreya-raghuvanshi ."
