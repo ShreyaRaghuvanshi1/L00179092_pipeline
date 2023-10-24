@@ -62,8 +62,9 @@ withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable
                 bat 'docker push shreyaraghuvanshi1/docker/shreya-raghuvanshi:latest'
             }
         }
-      }
 }
+    }
+
 
 stage('Update Deployment File') {
         environment {
