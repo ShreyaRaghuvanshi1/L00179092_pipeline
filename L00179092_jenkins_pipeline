@@ -43,6 +43,12 @@ stage('Build Docker Image') {
         }
       }
     }
+stage('login')
+{
+steps{
+bat 'echo $REGISTRY_CREDENTIALS_PSW | docker login -u $REGISTRY_CREDENTIALS_USR --password-stdin'
+}
+}
 
 stage('Push Docker Image'){
  environment {
@@ -53,12 +59,10 @@ stage('Push Docker Image'){
       }
 
   steps{
-    script {
-withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable:'USER', passwordVariable: 'PASSWORD')])}
-{
+    
            // def registry_url = "registry.hub.docker.com/"
-        def dockerImage = docker.image('docker/shreya-raghuvanshi')
-            bat 'docker login -u $USER -p $PASSWORD --password-stdin'
+      //  def dockerImage = docker.image('docker/shreya-raghuvanshi')
+          //  bat 'docker login -u $USER -p $PASSWORD --password-stdin'
             //docker.withRegistry('http://registry.hub.docker.com/', "docker-cred") 
 
                 bat 'docker push shreyaraghuvanshi1/docker/shreya-raghuvanshi:latest'
