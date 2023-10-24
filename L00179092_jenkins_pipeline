@@ -60,7 +60,7 @@ stage('Push Docker Image'){
           //  bat 'docker login -u $USER -p $PASSWORD --password-stdin'
             //docker.withRegistry('http://registry.hub.docker.com/', "docker-cred") 
 
-                bat 'docker push shreyaraghuvanshi1/docker/shreya-raghuvanshi:latest'
+                bat 'docker push shreyaraghuvanshi1/docker/shreya-raghuvanshi'
             
         }
 }
