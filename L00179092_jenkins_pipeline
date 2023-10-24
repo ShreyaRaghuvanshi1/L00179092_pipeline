@@ -30,7 +30,7 @@ stage('Build and Test') {
         }
       }
     }
- stage('Build Docker Image') {
+stage('Build Docker Image') {
       environment {
         //DOCKER_IMAGE = "ShreyaRaghuvanshi ."
         // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
@@ -39,14 +39,10 @@ stage('Build and Test') {
       steps {
         script {
             bat 'cd Mvn_L00179092 && docker build -t docker/shreya-raghuvanshi .'
- def dockerImage = docker.image("docker/shreya-raghuvanshi")
-             docker.withRegistry('https://registry.hub.docker.com/', "docker-cred") {
-                dockerImage.push()
            
         }
       }
     }
-}
 stage('Push Docker Image'){
  environment {
         DOCKER_IMAGE = "shreya-raghuvanshi ."
