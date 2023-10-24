@@ -45,10 +45,10 @@ stage('Build Docker Image') {
     }
 stage('Push Docker Image'){
  environment {
-        DOCKER_IMAGE = "shreya-raghuvanshi ."
+        //DOCKER_IMAGE = "shreya-raghuvanshi ."
         // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
-     def registry_url = "shreyaraghuvanshi/docker/shreya-raghuvanshi"
+     def registry_url = "shreyaraghuvanshi1/docker/shreya-raghuvanshi"
       }
 
   steps{
