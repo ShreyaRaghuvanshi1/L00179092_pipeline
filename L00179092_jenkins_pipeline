@@ -45,18 +45,19 @@ stage('Build and Test') {
     }
 stage('Push Docker Image'){
  environment {
-        //DOCKER_IMAGE = "ShreyaRaghuvanshi ."
+        DOCKER_IMAGE = "shreya-raghuvanshi ."
         // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
+     def registry_url = "registry.hub.docker.com/"
       }
 
   steps{
     script {
 withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable:'USER', passwordVariable: 'PASSWORD')])}
 {
-            def registry_url = "registry.hub.docker.com/"
+           // def registry_url = "registry.hub.docker.com/"
         def dockerImage = docker.image('docker/shreya-raghuvanshi')
-            bat "docker login -u $USER -p $PASSWORD ${registry_url}"
+            bat "docker login -u $USER -p $PASSWORD"
             docker.withRegistry('http://registry.hub.docker.com/', "docker-cred") {
                 bat "docker push shreyaraghuvanshi1/docker_repo:latest"
             }
