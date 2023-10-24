@@ -43,16 +43,6 @@ stage('Build Docker Image') {
         }
       }
     }
-stage('login'){
-environment {
-        //DOCKER_IMAGE = "ShreyaRaghuvanshi ."
-        // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
-        REGISTRY_CREDENTIALS = credentials('docker-cred')
-      }
-steps{
-bat 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-}
-}
 
 stage('Push Docker Image'){
  environment {
@@ -71,7 +61,7 @@ withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable
             bat 'docker login -u $USER -p $PASSWORD --password-stdin'
             //docker.withRegistry('http://registry.hub.docker.com/', "docker-cred") 
 
-                bat 'docker push shreyaraghuvanshi1/shreya-raghuvanshi:latest'
+                bat 'docker push shreyaraghuvanshi1/docker/shreya-raghuvanshi:latest'
             
         }
 }
