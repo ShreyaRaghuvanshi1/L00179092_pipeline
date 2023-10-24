@@ -59,12 +59,14 @@ stage('Push Docker Image'){
       //  def dockerImage = docker.image('docker/shreya-raghuvanshi')
           //  bat 'docker login -u $USER -p $PASSWORD --password-stdin'
             //docker.withRegistry('http://registry.hub.docker.com/', "docker-cred") 
-                bat 'docker tag docker/shreya-raghuvanshi:latest docker:new'
-                bat 'docker push docker/shreya-raghuvanshi:latest'
+              //  bat 'docker tag docker/shreya-raghuvanshi:latest docker:new'
+               // bat 'docker push docker/shreya-raghuvanshi:latest'
+withDockerRegistry([credentialsId: "docker-cred", url: "https://index.docker.io/v1"]){
+bat "docker push docker/shreya-raghuvanshi:latest"
             
         }
 }
-    
+    }
 
 
 stage('Update Deployment File') {
