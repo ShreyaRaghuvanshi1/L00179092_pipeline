@@ -72,26 +72,11 @@ bat "docker push docker/shreya-raghuvanshi:latest"
     }
 
 
-stage('Update Deployment File') {
-        environment {
-            GIT_REPO_NAME = "L00179092_pipeline"
-            GIT_USER_NAME = "ShreyaRaghuvanshi1"
-        }
-        steps {
-            withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
-                bat '''
-                    git config user.email "L00179092@atu.ie"
-                    git config user.name "ShreyaRaghuvanshi1"
-                    BUILD_NUMBER=${BUILD_NUMBER}
-                    sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" WebApp.java
-                    git add WebApp.java
-                    git commit -m "Update deployment image to version ${BUILD_NUMBER}"
-                    git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
-                '''
-            }
-        }
-    }
-  }
+post {
+always{
+bat 'docker logout'
+}
+}
 
 }
 
