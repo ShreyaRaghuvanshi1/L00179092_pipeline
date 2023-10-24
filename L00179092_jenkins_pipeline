@@ -40,7 +40,7 @@ stage('Build and Test') {
         script {
             bat 'cd Mvn_L00179092 && docker build -t docker/shreya-raghuvanshi .'
  def dockerImage = docker.image("docker/shreya-raghuvanshi")
-             docker.withRegistry('http://registry.hub.docker.com/', "docker-cred") {
+             docker.withRegistry('https://registry.hub.docker.com/', "docker-cred") {
                 dockerImage.push()
            
         }
