@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment # Kubernetes resource kind we are creating
 metadata:
-  name: javadeploy1
+  name: javadeploy
 spec:
   selector:
     matchLabels:
@@ -13,7 +13,7 @@ spec:
         app: java
     spec:
       containers:
-        - name: docker_repo
+        - name: dockerrepo
           image: docker/shreya-raghuvanshi # Image that will be used to containers in the cluster
           imagePullPolicy: IfNotPresent
           ports:
