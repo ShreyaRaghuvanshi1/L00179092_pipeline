@@ -16,6 +16,7 @@ spec:
         - name: minikube
           image: shreyaraghuvanshi1/docker_repo:latest # Image that will be used to containers in the cluster
           imagePullPolicy: Always
+          restartPolicy: Never 
           ports:
             - containerPort: 8080 # The port that the container is running on in the cluster
 
