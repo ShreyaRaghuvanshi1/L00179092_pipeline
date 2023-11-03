@@ -19,6 +19,13 @@ spec:
           restartPolicy: Never 
           ports:
             - containerPort: 8080 # The port that the container is running on in the cluster
+          resources:
+            limits:
+        # Maximum memory
+              memory: "1Gi"
+        # Maximum CPU usage
+              cpu: "1000m"  
+      
 
 
 ---
