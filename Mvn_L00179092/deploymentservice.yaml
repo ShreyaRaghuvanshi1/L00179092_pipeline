@@ -18,7 +18,7 @@ spec:
           imagePullPolicy: Always
           restartPolicy: Never 
           ports:
-            - containerPort: 8080 # The port that the container is running on in the cluster
+            - containerPort: 80 # The port that the container is running on in the cluster
           resources:
             limits:
         # Maximum memory
@@ -39,8 +39,8 @@ spec:
     app: java
   ports:
     - protocol: "TCP"
-      port: 8080 # The port that the service is running on in the cluster
-      targetPort: 8080 # The port exposed by the service
+      port: 80 # The port that the service is running on in the cluster
+      targetPort: 80 # The port exposed by the service
   type: NodePort # type of the service.
 
 
