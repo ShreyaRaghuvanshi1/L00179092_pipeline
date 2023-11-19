@@ -62,7 +62,7 @@
           <manifest>
             <addClasspath>true</addClasspath>
             <classpathPrefix>lib/</classpathPrefix>
-            <mainClass>com.mypackage.MyClass</mainClass>
+            <mainClass>main.java.ie.atu.Maven_L00179092</mainClass>
           </manifest>
         </archive>
       </configuration>
