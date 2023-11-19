@@ -44,3 +44,16 @@ spec:
   type: NodePort # type of the service.
 
 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod
+spec:
+  containers:
+    - name: minikube
+      image:  shreyaraghuvanshi1/docker_repo:latest
+      imagePullPolicy: IfNotPresent
+      command: [ "echo", "SUCCESS" ]
+  restartPolicy: Always
+  imagePullSecrets:
+    - name: acs-plugin--209ns27kjt7
