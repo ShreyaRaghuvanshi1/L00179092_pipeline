@@ -1,4 +1,4 @@
-package ie.atu.Maven_L00179092;
+package classes.ie.atu.Maven_L00179092;
 
 /**
  * Hello world!
