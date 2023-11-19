@@ -61,8 +61,7 @@
         <archive>
           <manifest>
             <addClasspath>true</addClasspath>
-            <classpathPrefix>lib/</classpathPrefix>
-            <mainClass>classes.ie.atu.Maven_L00179092</mainClass>
+            <mainClass>target.classes.ie.atu.Maven_L00179092</mainClass>
           </manifest>
         </archive>
       </configuration>
