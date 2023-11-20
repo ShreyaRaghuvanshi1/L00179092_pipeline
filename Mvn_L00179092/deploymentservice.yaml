@@ -18,7 +18,7 @@ spec:
           imagePullPolicy: Always
           restartPolicy: Never 
           ports:
-            - containerPort: 80 # The port that the container is running on in the cluster
+            - containerPort: 22 # The port that the container is running on in the cluster
           resources:
             limits:
         # Maximum memory
@@ -39,8 +39,18 @@ spec:
     app: java
   ports:
     - protocol: "TCP"
-      port: 80 # The port that the service is running on in the cluster
-      targetPort: 80 # The port exposed by the service
+      port: 22 # The port that the service is running on in the cluster
+      targetPort: 22 # The port exposed by the service
   type: NodePort # type of the service.
 
-
+apiVersion: v1
+kind: Pod
+metadata:
+   name: javapod
+spec:
+   containers:
+   - name: minikube
+     image: shreyaraghuvanshi1/docker_repo:latest
+     ports:
+     - containerPort: 22
+   restartPolicy: Never
